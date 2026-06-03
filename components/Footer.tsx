@@ -20,7 +20,16 @@ export default function Footer() {
     <footer className="border-t border-line-soft">
       {/* watermark marquee */}
       <div className="overflow-hidden py-10">
-        <div className="flex w-max animate-marquee-slow items-center">
+        <div
+          className="flex w-max animate-marquee-slow items-center"
+          style={{
+            willChange: "transform",
+            WebkitTransform: "translateZ(0)",
+            transform: "translateZ(0)",
+            WebkitBackfaceVisibility: "hidden",
+            backfaceVisibility: "hidden",
+          }}
+        >
           {Array.from({ length: 6 }).map((_, i) => (
             <span key={i} className="display flex items-center whitespace-nowrap text-[5rem] italic leading-none text-cream/[0.04] md:text-[8rem]">
               Wine Adore

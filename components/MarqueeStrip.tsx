@@ -14,7 +14,13 @@ export default function MarqueeStrip() {
     <div className="overflow-hidden border-y border-line-soft bg-bg-black py-6">
       <div
         className="flex w-max animate-marquee items-center"
-        style={{ willChange: "transform", transform: "translateZ(0)" }}
+        style={{
+          willChange: "transform",
+          WebkitTransform: "translateZ(0)",
+          transform: "translateZ(0)",
+          WebkitBackfaceVisibility: "hidden",
+          backfaceVisibility: "hidden",
+        }}
       >
         {items.map((p, i) => (
           <span key={i} className="flex items-center whitespace-nowrap">

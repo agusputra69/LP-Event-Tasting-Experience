@@ -120,25 +120,46 @@ body {
   color: var(--color-accent-soft);
 }
 
-/* Marquee — use translate3d so mobile browsers always composite on GPU */
+/* Marquee — use translate3d so mobile browsers always composite on GPU.
+   iOS Safari requires -webkit- prefixes + backface-visibility to trigger
+   a compositing layer, otherwise animation silently fails on w-max elements. */
 @keyframes marquee {
   from { transform: translate3d(0, 0, 0); }
   to   { transform: translate3d(-50%, 0, 0); }
 }
+@-webkit-keyframes marquee {
+  from { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+  to   { -webkit-transform: translate3d(-50%, 0, 0); transform: translate3d(-50%, 0, 0); }
+}
 .animate-marquee {
+  -webkit-animation: marquee 32s linear infinite;
   animation: marquee 32s linear infinite;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform;
 }
 @keyframes marquee-slow {
   from { transform: translate3d(0, 0, 0); }
   to   { transform: translate3d(-50%, 0, 0); }
 }
+@-webkit-keyframes marquee-slow {
+  from { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+  to   { -webkit-transform: translate3d(-50%, 0, 0); transform: translate3d(-50%, 0, 0); }
+}
 .animate-marquee-slow {
+  -webkit-animation: marquee-slow 60s linear infinite;
   animation: marquee-slow 60s linear infinite;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
-  .animate-marquee-slow { animation: none; }
+  .animate-marquee-slow {
+    -webkit-animation: none;
+    animation: none;
+  }
   html { scroll-behavior: auto; }
 }
 

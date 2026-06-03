@@ -135,7 +135,16 @@ export default function HeroCarousel() {
           Collaborated with
         </span>
         <div className="relative flex-1 min-w-0 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
-          <div className="flex w-max animate-marquee items-center gap-14">
+          <div
+            className="flex w-max animate-marquee items-center gap-14"
+            style={{
+              willChange: "transform",
+              WebkitTransform: "translateZ(0)",
+              transform: "translateZ(0)",
+              WebkitBackfaceVisibility: "hidden",
+              backfaceVisibility: "hidden",
+            }}
+          >
             {[...LOGOS, ...LOGOS, ...LOGOS].map((logo, i) => (
               <div key={i} className="relative h-8 w-24 shrink-0">
                 <Image
