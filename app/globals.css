@@ -1,0 +1,304 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Figma brand scale ─────────────────────────────── */
+  --color-brand-100: #f9f0f2;
+  --color-brand-200: #f4e2e4;
+  --color-brand-300: #eed3d7;
+  --color-brand-400: #e9c5ca;
+  --color-brand-500: #d38b95;
+  --color-brand-600: #c86e7a; /* Primary brand */
+  --color-brand-700: #a25963; /* Brand bold */
+  --color-brand-800: #7c444b; /* Brand strong */
+  --color-brand-900: #432428; /* Brand intense */
+
+  /* ── Surfaces (burgundy-tinted neutrals) ───────────── */
+  --color-bg: #190d0f;
+  --color-bg-black: #120809;
+  --color-surface: #221013;
+  --color-card: #271216;
+  --color-card-2: #2f161b;
+  --color-line: rgba(245, 236, 232, 0.1);
+  --color-line-soft: rgba(245, 236, 232, 0.06);
+
+  --color-cream: #f5ece8;
+  --color-muted: #c0a5a4;
+  --color-muted-2: #997e7e;
+
+  /* Aliases used by Steps / Founders sections (text = ink, elevated bg = surface) */
+  --color-ink: var(--color-cream);
+  --color-ink-2: var(--color-muted);
+  --color-ink-3: var(--color-muted-2);
+  --color-surface-light: #2c1519;
+  --color-surface-2: #221013;
+  --color-hairline: var(--color-line);
+
+  /* ── Semantic aliases → brand scale (single source) ── */
+  --color-accent: var(--color-brand-600); /* primary */
+  --color-accent-soft: var(--color-brand-600); /* soft text accent */
+  --color-brand-bold: var(--color-brand-700);
+  --color-brand-strong: var(--color-brand-800);
+  --color-brand-intense: var(--color-brand-900);
+  --color-brand-dim: var(--color-brand-400);
+  --color-on-accent: #2a1316; /* readable fg on primary */
+  --color-wine: var(--color-brand-800);
+  --color-wine-glow: var(--color-brand-700);
+
+  --font-display: var(--font-playfair), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand-tinted shadows (never pure black) */
+  --shadow-card: 0 24px 60px -28px rgba(40, 18, 22, 0.72);
+  --shadow-soft: 0 14px 44px -20px rgba(40, 18, 22, 0.55);
+  --shadow-glow: 0 0 0 1px rgba(233, 197, 202, 0.06), 0 30px 80px -40px rgba(200, 110, 122, 0.45);
+}
+
+@layer base {
+  /* Default border color for the dark site. Layered so Tailwind
+     border-color utilities (e.g. border-[#d8cdd0] in the light modal) win. */
+  * {
+    border-color: var(--color-line);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Only elements with scroll-snap-align (the promo + APC cards) become
+     snap targets — gentle proximity snap, the rest of the page scrolls free. */
+  scroll-snap-type: y proximity;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Eyebrow / overline label (updated to uniform chip pill style) */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--color-accent-soft);
+  background-color: rgba(200, 110, 122, 0.1);
+  border: 1px solid rgba(200, 110, 122, 0.2);
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  line-height: 1;
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+}
+
+.display em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-accent-soft);
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+@keyframes marquee-slow {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee-slow {
+  animation: marquee-slow 60s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-slow { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes zoom-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.sm\:animate-zoom-in {
+  animation: slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (min-width: 640px) {
+  .sm\:animate-zoom-in {
+    animation: zoom-in 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
+/* Booking panel animations */
+.booking-panel {
+  animation: drawer-up 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes drawer-up {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+@media (min-width: 640px) {
+  .booking-panel {
+    animation: modal-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes modal-in {
+    from { opacity: 0; transform: translateY(12px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+}
+
+/* Booking form fields — borders + focus state (unlayered so they win
+   over Tailwind's layered utilities and the base default border-color). */
+.field {
+  border: 1px solid #d8cdd0;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.field:hover {
+  border-color: #c4b6ba;
+}
+.field:focus,
+.field:focus-visible,
+.field[data-open="true"] {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px rgba(200, 110, 122, 0.18);
+  outline: none;
+}
+
+/* Rotating hero review */
+@keyframes review-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+.animate-review {
+  animation: review-in 0.5s ease forwards;
+}
+
+/* Skip-to-content link — visible only on keyboard focus */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  transform: translateY(-150%);
+  border-radius: 9999px;
+  background-color: var(--color-accent);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+  transition: transform 0.2s ease;
+}
+.skip-link:focus {
+  transform: translateY(0);
+  outline: none;
+}
+
+/* Hide scrollbar (day picker row) while keeping scroll */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Anchor offset so the fixed nav doesn't cover scrolled-to sections */
+[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+/* Premium card: brand-tinted shadow + top inset highlight (machined feel)
+   without restructuring DOM. Pair with an existing bg + border. */
+.card-premium {
+  box-shadow: var(--shadow-soft), inset 0 1px 0 0 rgba(245, 236, 232, 0.06);
+}
+.card-premium-lg {
+  box-shadow: var(--shadow-card), inset 0 1px 0 0 rgba(245, 236, 232, 0.07);
+}
+
+/* Fixed film-grain overlay for tactile depth (pointer-events none) */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Reveal fallback: if JS/motion is unavailable, never hide content */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/* Light mode variable overrides */
+:root.light {
+  --color-bg: #fdfaf9;
+  --color-bg-black: #f5eae7;
+  --color-surface: #f7edea;
+  --color-card: #fdfaf9;
+  --color-card-2: #f4eae7;
+  --color-line: rgba(42, 23, 21, 0.1);
+  --color-line-soft: rgba(42, 23, 21, 0.05);
+
+  --color-cream: #1e0d11;
+  --color-muted: #5e4749;
+  --color-muted-2: #806869;
+
+  --color-ink: #1e0d11;
+  --color-ink-2: #5e4749;
+  --color-ink-3: #806869;
+  --color-surface-light: #f7edea;
+  --color-surface-2: #f4eae7;
+  --color-hairline: rgba(42, 23, 21, 0.1);
+
+  --color-on-accent: #fdfaf9;
+  
+  /* Subtle shadows for light theme */
+  --shadow-card: 0 24px 60px -28px rgba(42, 23, 21, 0.15);
+  --shadow-soft: 0 14px 44px -20px rgba(42, 23, 21, 0.12);
+  --shadow-glow: 0 0 0 1px rgba(42, 23, 21, 0.04), 0 30px 80px -40px rgba(200, 110, 122, 0.15);
+}
+
+/* Targeted transitions for premium theme switching feel */
+body, 
+section, 
+header, 
+footer,
+.card-premium,
+.card-premium-lg,
+.eyebrow,
+button,
+a,
+h1, h2, h3, p, span {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
