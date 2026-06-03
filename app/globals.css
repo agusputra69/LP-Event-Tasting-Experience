@@ -80,9 +80,6 @@
 
 html {
   scroll-behavior: smooth;
-  /* Only elements with scroll-snap-align (the promo + APC cards) become
-     snap targets — gentle proximity snap, the rest of the page scrolls free. */
-  scroll-snap-type: y proximity;
 }
 
 body {
@@ -123,17 +120,17 @@ body {
   color: var(--color-accent-soft);
 }
 
-/* Marquee */
+/* Marquee — use translate3d so mobile browsers always composite on GPU */
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
 }
 .animate-marquee {
   animation: marquee 32s linear infinite;
 }
 @keyframes marquee-slow {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
 }
 .animate-marquee-slow {
   animation: marquee-slow 60s linear infinite;

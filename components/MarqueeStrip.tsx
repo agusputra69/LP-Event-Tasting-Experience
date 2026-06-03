@@ -8,10 +8,14 @@ const phrases = [
 ];
 
 export default function MarqueeStrip() {
-  const items = [...phrases, ...phrases];
+  // 4× repetition so the track is always wider than any viewport
+  const items = [...phrases, ...phrases, ...phrases, ...phrases];
   return (
     <div className="overflow-hidden border-y border-line-soft bg-bg-black py-6">
-      <div className="flex w-max animate-marquee items-center">
+      <div
+        className="flex w-max animate-marquee items-center"
+        style={{ willChange: "transform", transform: "translateZ(0)" }}
+      >
         {items.map((p, i) => (
           <span key={i} className="flex items-center whitespace-nowrap">
             <Sparkle className="mx-10 size-4 text-accent-soft/70" />

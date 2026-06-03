@@ -48,7 +48,7 @@ export default function Steps() {
     <section
       id="steps"
       ref={ref}
-      className="relative py-24 lg:py-0 my-12 lg:my-0"
+      className="relative py-24 lg:py-0 my-16 lg:my-0"
       style={isDesktop ? { height: `${steps.length * 100}vh` } : undefined}
     >
       <div className="relative lg:sticky lg:top-0 flex min-h-screen lg:h-screen items-center py-10 lg:py-0 overflow-y-auto lg:overflow-hidden">

@@ -54,8 +54,8 @@ export default function BenefitMobile() {
         </div>
       </Reveal>
 
-      {/* sticky-stacking cards */}
-      <div className="mt-5 flex flex-col gap-5 pb-[10vh]">
+      {/* sticky-stacking cards — extra bottom padding so last card clears the next section */}
+      <div className="mt-5 flex flex-col gap-5 pb-[24vh]">
         {items.map((it, i) => (
           <article
             key={it.n}

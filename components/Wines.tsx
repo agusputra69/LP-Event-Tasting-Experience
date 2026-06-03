@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { ArrowUpRight } from "./icons";
 import Reveal from "./Reveal";
 
@@ -214,6 +214,8 @@ const wines = [
 
 export default function Wines() {
   const rowRef = useRef<HTMLDivElement>(null);
+  // Track which card is "active" (clicked/tapped on touch devices)
+  const [activeCard, setActiveCard] = useState<string | null>(null);
 
   const scrollByCards = (dir: 1 | -1) => {
     const row = rowRef.current;
@@ -221,6 +223,10 @@ export default function Wines() {
     const card = row.querySelector<HTMLElement>("[data-wine-card]");
     const step = card ? card.offsetWidth + 24 : row.clientWidth * 0.8;
     row.scrollBy({ left: dir * step, behavior: "smooth" });
+  };
+
+  const toggleCard = (src: string) => {
+    setActiveCard((prev) => (prev === src ? null : src));
   };
 
   return (
@@ -267,113 +273,130 @@ export default function Wines() {
         </div>
       </Reveal>
 
+      {/* Hint text — adapts by screen size */}
+      <p className="mt-6 text-center text-xs text-muted-2">
+        <span className="lg:hidden">Tap a card to explore details &amp; pricing</span>
+        <span className="hidden lg:inline">Hover a card to explore details &amp; pricing</span>
+      </p>
+
       <div
         ref={rowRef}
-        className="no-scrollbar mt-4 -mx-6 flex snap-x scroll-px-6 gap-6 overflow-x-auto px-6 pt-8 pb-8 md:-mx-10 md:px-10 md:scroll-px-10"
+        className="no-scrollbar mt-3 -mx-6 flex snap-x scroll-px-6 gap-6 overflow-x-auto px-6 pt-6 pb-8 md:-mx-10 md:px-10 md:scroll-px-10"
       >
-        {wines.map((w) => (
-          <div
-            key={w.src}
-            data-wine-card
-            className="group relative flex w-[280px] sm:w-[310px] md:w-[320px] shrink-0 snap-start flex-col rounded-[24px] border border-[#ddc8cc] bg-white transition-all duration-500 hover:-translate-y-2"
-          >
-            {/* Image container */}
-            <div className="relative h-[385px] w-full shrink-0 overflow-hidden rounded-t-[24px] bg-[#241215]">
-              <Image
-                src={w.src}
-                alt={w.name}
-                fill
-                sizes="(min-width: 1024px) 320px, 280px"
-                className="object-cover object-[center_35%] transition-transform duration-700 group-hover:scale-105"
-              />
-              {/* Rating Badge */}
-              <div className="absolute right-3 top-3 z-20 size-[60px] shadow-[0_4px_16px_rgba(0,0,0,0.3)]" style={{ borderRadius: '50%' }}>
-                <Image src="/images/wine_rating.png" alt="Wine Adore Rating Badge" fill className="object-contain" />
-                <div className="absolute inset-0 flex flex-col items-center">
-                  <span className="text-[17px] font-black leading-none text-white drop-shadow-sm mt-[14px]" style={{ fontFamily: 'var(--font-jakarta)' }}>
-                    {w.ratingNumber}
+        {wines.map((w) => {
+          const isActive = activeCard === w.src;
+          return (
+            <div
+              key={w.src}
+              data-wine-card
+              // On touch: click toggles overlay. On desktop: CSS group-hover handles it.
+              onClick={() => toggleCard(w.src)}
+              className={`group relative flex w-[260px] sm:w-[290px] md:w-[320px] shrink-0 snap-start flex-col rounded-[24px] border border-[#ddc8cc] bg-white cursor-pointer transition-all duration-500 hover:-translate-y-2 ${isActive ? "-translate-y-2" : ""}`}
+            >
+              {/* Image container — shorter on mobile */}
+              <div className="relative h-[260px] sm:h-[330px] md:h-[385px] w-full shrink-0 overflow-hidden rounded-t-[24px] bg-[#241215]">
+                <Image
+                  src={w.src}
+                  alt={w.name}
+                  fill
+                  sizes="(min-width: 1024px) 320px, 280px"
+                  className={`object-cover object-[center_35%] transition-transform duration-700 group-hover:scale-105 ${isActive ? "scale-105" : ""}`}
+                />
+                {/* Rating Badge */}
+                <div className="absolute right-3 top-3 z-20 size-[60px] shadow-[0_4px_16px_rgba(0,0,0,0.3)]" style={{ borderRadius: "50%" }}>
+                  <Image src="/images/wine_rating.png" alt="Wine Adore Rating Badge" fill className="object-contain" />
+                  <div className="absolute inset-0 flex flex-col items-center">
+                    <span className="text-[17px] font-black leading-none text-white drop-shadow-sm mt-[14px]" style={{ fontFamily: "var(--font-jakarta)" }}>
+                      {w.ratingNumber}
+                    </span>
+                    <div className="absolute bottom-[13px] inset-x-0 flex justify-between px-[16px] text-[8px] font-black leading-none text-white drop-shadow-sm" style={{ fontFamily: "var(--font-jakarta)" }}>
+                      <span>{w.ratingComplexity}</span>
+                      <span>{w.ratingVintage}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Hover/tap overlay — CSS hover on desktop, isActive class on touch */}
+              <div
+                className={`pointer-events-none absolute inset-x-0 top-0 z-10 flex flex-col items-center justify-center gap-3.5 px-6 bg-black/45 backdrop-blur-[3px] rounded-t-[24px] transition-opacity duration-300
+                  h-[260px] sm:h-[330px] md:h-[385px]
+                  opacity-0 group-hover:opacity-100
+                  ${isActive ? "opacity-100 !pointer-events-auto" : ""}
+                  lg:group-hover:pointer-events-auto`}
+              >
+                <h3 className="max-w-[22ch] text-center text-[19px] font-bold leading-snug text-white drop-shadow-sm">
+                  {w.name}
+                </h3>
+                <div className="flex flex-col items-center gap-2.5 w-full px-4">
+                  <a
+                    href={w.shopUrl}
+                    onClick={(e) => e.stopPropagation()}
+                    className="flex w-full max-w-[180px] items-center justify-center gap-2 rounded-full bg-accent py-2.5 text-xs font-semibold text-white shadow-[0_6px_20px_rgba(160,60,80,0.5)] transition-transform hover:scale-[1.03] active:scale-[0.97]"
+                  >
+                    <svg className="size-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                      <line x1="3" y1="6" x2="21" y2="6" />
+                      <path d="M16 10a4 4 0 0 1-8 0" />
+                    </svg>
+                    Wine Adore Shop
+                  </a>
+                  <a
+                    href={w.vivinoUrl}
+                    onClick={(e) => e.stopPropagation()}
+                    className="flex w-full max-w-[180px] items-center justify-center rounded-full bg-white/90 py-2.5 text-xs font-semibold text-accent transition-transform hover:scale-[1.03] active:scale-[0.97]"
+                  >
+                    View in Vivino
+                  </a>
+                </div>
+              </div>
+
+              {/* Bottom info — dims on hover/tap */}
+              <div className={`relative flex flex-col bg-white px-4 py-4 rounded-b-[24px] transition-opacity duration-400 group-hover:opacity-50 ${isActive ? "opacity-50" : ""}`}>
+                <div className="flex flex-col items-center text-center">
+                  <span className="text-[11px] font-medium tracking-wider text-[#9a8e90]">
+                    {w.producer}
                   </span>
-                  <div className="absolute bottom-[13px] inset-x-0 flex justify-between px-[16px] text-[8px] font-black leading-none text-white drop-shadow-sm" style={{ fontFamily: 'var(--font-jakarta)' }}>
-                    <span>{w.ratingComplexity}</span>
-                    <span>{w.ratingVintage}</span>
+                  <h3 className="mt-1 text-[15px] font-bold text-[#241619] line-clamp-1">
+                    {w.name}
+                  </h3>
+                  {/* Pills */}
+                  <div className="no-scrollbar mt-3 flex w-full items-center justify-start gap-1.5 overflow-x-auto px-1 py-0.5 flex-nowrap">
+                    <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#e6dde0] bg-[#faf8f9] px-3 py-1 text-[11px] font-semibold text-[#7c6f71]">
+                      <span className="size-2 rounded-full" style={{ backgroundColor: w.dotColor }} />
+                      {w.type}
+                    </span>
+                    <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-[#e6dde0] bg-[#faf8f9] px-3 py-1 text-[11px] font-semibold text-[#7c6f71]">
+                      <span className="text-xs leading-none mt-[-1px]">{w.flag}</span>
+                      {w.country}
+                    </span>
+                    <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#e6dde0] bg-[#faf8f9] px-3 py-1 text-[11px] font-semibold text-[#7c6f71]">
+                      <svg className="size-3 text-[#9a8e90]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                        <line x1="16" y1="2" x2="16" y2="6" />
+                        <line x1="8" y1="2" x2="8" y2="6" />
+                        <line x1="3" y1="10" x2="21" y2="10" />
+                      </svg>
+                      {w.year}
+                    </span>
+                  </div>
+                </div>
+                {/* Price Row */}
+                <div className="mt-3 flex items-center justify-center gap-3 border-t border-[#f4ebed] pt-3 w-full text-center">
+                  <div className="flex flex-col items-center">
+                    <span className="text-[10px] uppercase tracking-wider text-[#9a8e90]">Retail</span>
+                    <span className="text-[13px] font-semibold text-[#7c6f71] line-through decoration-1">{w.retailPrice}</span>
+                  </div>
+                  <div className="w-px h-6 bg-[#e6dde0] shrink-0" />
+                  <div className="flex flex-col items-center">
+                    <span className="text-[10px] uppercase tracking-wider text-accent font-semibold">Wine Adore</span>
+                    <span className="text-[14px] font-bold text-accent">{w.adorePrice}</span>
                   </div>
                 </div>
               </div>
             </div>
-
-            {/* Hover overlay */}
-            <div
-              className="pointer-events-none absolute inset-x-0 top-0 z-10 flex h-[385px] flex-col items-center justify-center gap-3.5 px-6 bg-black/45 backdrop-blur-[3px] opacity-0 rounded-t-[24px] transition-opacity duration-300 group-hover:opacity-100 group-hover:pointer-events-auto"
-            >
-              <h3 className="max-w-[22ch] text-center text-[19px] font-bold leading-snug text-white drop-shadow-sm">
-                {w.name}
-              </h3>
-              <div className="flex flex-col items-center gap-2.5 w-full px-4">
-                <a
-                  href={w.shopUrl}
-                  className="flex w-full max-w-[180px] items-center justify-center gap-2 rounded-full bg-accent py-2.5 text-xs font-semibold text-white shadow-[0_6px_20px_rgba(160,60,80,0.5)] transition-transform hover:scale-[1.03] active:scale-[0.97]"
-                >
-                  <svg className="size-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
-                    <line x1="3" y1="6" x2="21" y2="6" />
-                    <path d="M16 10a4 4 0 0 1-8 0" />
-                  </svg>
-                  Wine Adore Shop
-                </a>
-                <a
-                  href={w.vivinoUrl}
-                  className="flex w-full max-w-[180px] items-center justify-center rounded-full bg-white/90 py-2.5 text-xs font-semibold text-accent transition-transform hover:scale-[1.03] active:scale-[0.97]"
-                >
-                  View in Vivino
-                </a>
-              </div>
-            </div>
-
-            {/* Bottom info — dims on hover */}
-            <div className="relative flex flex-col bg-white px-4 py-4 rounded-b-[24px] transition-opacity duration-400 group-hover:opacity-50">
-              <div className="flex flex-col items-center text-center">
-                <span className="text-[11px] font-medium tracking-wider text-[#9a8e90]">
-                  {w.producer}
-                </span>
-                <h3 className="mt-1 text-[15px] font-bold text-[#241619] line-clamp-1">
-                  {w.name}
-                </h3>
-                {/* Pills */}
-                <div className="no-scrollbar mt-3 flex w-full items-center justify-start gap-1.5 overflow-x-auto px-1 py-0.5 flex-nowrap">
-                  <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#e6dde0] bg-[#faf8f9] px-3 py-1 text-[11px] font-semibold text-[#7c6f71]">
-                    <span className="size-2 rounded-full" style={{ backgroundColor: w.dotColor }} />
-                    {w.type}
-                  </span>
-                  <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-[#e6dde0] bg-[#faf8f9] px-3 py-1 text-[11px] font-semibold text-[#7c6f71]">
-                    <span className="text-xs leading-none mt-[-1px]">{w.flag}</span>
-                    {w.country}
-                  </span>
-                  <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#e6dde0] bg-[#faf8f9] px-3 py-1 text-[11px] font-semibold text-[#7c6f71]">
-                    <svg className="size-3 text-[#9a8e90]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                      <line x1="16" y1="2" x2="16" y2="6" />
-                      <line x1="8" y1="2" x2="8" y2="6" />
-                      <line x1="3" y1="10" x2="21" y2="10" />
-                    </svg>
-                    {w.year}
-                  </span>
-                </div>
-              </div>
-              {/* Price Row */}
-              <div className="mt-3 flex items-center justify-center gap-3 border-t border-[#f4ebed] pt-3 w-full text-center">
-                <div className="flex flex-col items-center">
-                  <span className="text-[10px] uppercase tracking-wider text-[#9a8e90]">Retail</span>
-                  <span className="text-[13px] font-semibold text-[#7c6f71] line-through decoration-1">{w.retailPrice}</span>
-                </div>
-                <div className="w-px h-6 bg-[#e6dde0] shrink-0" />
-                <div className="flex flex-col items-center">
-                  <span className="text-[10px] uppercase tracking-wider text-accent font-semibold">Wine Adore</span>
-                  <span className="text-[14px] font-bold text-accent">{w.adorePrice}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       <p className="mt-8 text-center text-sm text-muted-2">
