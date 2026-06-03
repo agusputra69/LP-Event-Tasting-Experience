@@ -58,9 +58,9 @@ npm run lint     # ESLint check
 | `Wines` | Featured wine card carousel | Client |
 | `Atmosphere` | Photo/video bento grid + music card | Server |
 | `Founders` | Founder cards + quote marquee | Server |
-| `PrivateCircle` | App ecosystem + Adore Private Circle tier | Server |
 | `Faq` | Accordion of common questions | Client |
 | `FinalCta` | Reservation CTA + location card | Server |
+| `PrivateCircle` | App ecosystem + Adore Private Circle tier | Server |
 | `Footer` | Watermark marquee + link columns | Server |
 
 ### Shared / Utility Components
