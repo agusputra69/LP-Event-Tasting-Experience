@@ -74,8 +74,8 @@ export default function BenefitMobile() {
               {it.n}
             </span>
             <div className="relative p-7">
-              <h3 className="display text-[1.45rem] text-cream md:text-[1.6rem]">{it.title}</h3>
-              <p className="mt-2 max-w-sm text-[0.95rem] leading-relaxed text-cream/80">{it.body}</p>
+              <h3 className="display text-[1.45rem] text-white md:text-[1.6rem]">{it.title}</h3>
+              <p className="mt-2 max-w-sm text-[0.95rem] leading-relaxed text-white/80">{it.body}</p>
             </div>
           </article>
         ))}
@@ -104,10 +104,10 @@ export default function BenefitMobile() {
             05
           </span>
           <div className="relative p-8">
-            <h3 className="display text-[1.6rem] text-cream md:text-[2rem]">
+            <h3 className="display text-[1.6rem] text-white md:text-[2rem]">
               The Beginning of Something Bigger
             </h3>
-            <p className="mt-3 max-w-xl leading-relaxed text-cream/80">
+            <p className="mt-3 max-w-xl leading-relaxed text-white/80">
               Selected guests may receive an invitation to the Adore Private Circle — a
               private network centered on wine, culture, and meaningful relationships.
             </p>

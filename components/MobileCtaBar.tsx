@@ -25,7 +25,7 @@ export default function MobileCtaBar() {
         show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0"
       }`}
     >
-      <div className="mx-auto flex w-full max-w-[1280px] items-center gap-3 rounded-3xl border border-line bg-[rgba(20,8,9,0.9)] px-4 py-3 shadow-[0_16px_40px_-24px_rgba(0,0,0,0.8)] backdrop-blur-xl">
+      <div className="mx-auto flex w-full max-w-[1280px] items-center gap-3 rounded-3xl border border-line bg-[var(--color-dropdown-bg)] px-4 py-3 shadow-card backdrop-blur-xl">
         <p className="min-w-0 flex-1 text-[0.78rem] font-medium leading-snug text-cream/90 sm:text-sm">
           Join Singapore’s most immersive 2-hour guided tasting
         </p>

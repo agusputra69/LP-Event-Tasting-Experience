@@ -46,7 +46,7 @@ export default function Home() {
         <GlowDivider />
 
         {/* FAQ + Final CTA — side by side */}
-        <section className="mx-auto max-w-[1280px] px-4 py-10 md:px-6 md:py-14">
+        <section className="mx-auto max-w-[1280px] px-6 py-10 md:px-10 md:py-14">
           <Reveal>
             <div className="grid gap-5 lg:grid-cols-[1.02fr_1fr] lg:items-stretch">
               <Faq />

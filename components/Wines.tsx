@@ -15,7 +15,9 @@ const wines = [
     country: "Portugal",
     flag: "🇵🇹",
     year: "Non-Vintage",
-    rating: 93,
+    ratingNumber: 93,
+    ratingComplexity: "A",
+    ratingVintage: "A",
     retailPrice: "SGD 123",
     adorePrice: "SGD 119",
     vivinoUrl: "https://www.vivino.com/en/bacalhoa-vinhos-de-portugal-moscatel-roxo-de-setubal-10-anos-superior/w/6030024?ref=nav-search",
@@ -30,7 +32,9 @@ const wines = [
     country: "Portugal",
     flag: "🇵🇹",
     year: "2023",
-    rating: 91,
+    ratingNumber: 91,
+    ratingComplexity: "A",
+    ratingVintage: "B",
     retailPrice: "SGD 190",
     adorePrice: "SGD 159",
     vivinoUrl: "https://www.vivino.com/en/ravasqueira-heritage-rose/w/1598254?ref=nav-search",
@@ -45,7 +49,9 @@ const wines = [
     country: "Portugal",
     flag: "🇵🇹",
     year: "2020",
-    rating: 92,
+    ratingNumber: 90,
+    ratingComplexity: "A",
+    ratingVintage: "A",
     retailPrice: "SGD 160",
     adorePrice: "SGD 129",
     vivinoUrl: "https://www.vivino.com/en/rocim-clay-aged-branco/w/7193592?ref=nav-search",
@@ -60,7 +66,9 @@ const wines = [
     country: "Portugal",
     flag: "🇵🇹",
     year: "2003",
-    rating: 95,
+    ratingNumber: 97,
+    ratingComplexity: "A",
+    ratingVintage: "B",
     retailPrice: "SGD 292",
     adorePrice: "SGD 249",
     vivinoUrl: "https://www.vivino.com/en/bacalhoa-vinhos-de-portugal-twenty-anos-moscatel-roxo-de-setubal-superior/w/7505421?ref=nav-search",
@@ -75,7 +83,9 @@ const wines = [
     country: "Portugal",
     flag: "🇵🇹",
     year: "2015",
-    rating: 96,
+    ratingNumber: 95,
+    ratingComplexity: "A",
+    ratingVintage: "A",
     retailPrice: "SGD 265",
     adorePrice: "SGD 255",
     vivinoUrl: "https://www.vivino.com/en/paco-dos-cunhas-de-santar-vinha-do-contador-grande-juri-branco/w/10484734?ref=nav-search",
@@ -90,7 +100,9 @@ const wines = [
     country: "Portugal",
     flag: "🇵🇹",
     year: "2017",
-    rating: 94,
+    ratingNumber: 93,
+    ratingComplexity: "A",
+    ratingVintage: "B",
     retailPrice: "SGD 270",
     adorePrice: "SGD 229",
     vivinoUrl: "https://www.vivino.com/en/quinta-dos-aciprestes-grande-reserva-talhao-14/w/8464684?ref=nav-search",
@@ -105,7 +117,9 @@ const wines = [
     country: "Portugal",
     flag: "🇵🇹",
     year: "2019",
-    rating: 95,
+    ratingNumber: 96,
+    ratingComplexity: "A",
+    ratingVintage: "A",
     retailPrice: "SGD 557",
     adorePrice: "SGD 379",
     vivinoUrl: "https://www.vivino.com/en/cartuxa-scala-coeli-reserva-tinto/w/1509186?ref=nav-search",
@@ -120,7 +134,9 @@ const wines = [
     country: "Portugal",
     flag: "🇵🇹",
     year: "Non-Vintage",
-    rating: 97,
+    ratingNumber: 94,
+    ratingComplexity: "A",
+    ratingVintage: "A",
     retailPrice: "SGD 370",
     adorePrice: "SGD 334",
     vivinoUrl: "https://www.vivino.com/en/javali-thirty-years-old-tawny-port/w/1926622?ref=nav-search",
@@ -135,7 +151,9 @@ const wines = [
     country: "Portugal",
     flag: "🇵🇹",
     year: "2013",
-    rating: 97,
+    ratingNumber: 96,
+    ratingComplexity: "A",
+    ratingVintage: "B",
     retailPrice: "SGD 375",
     adorePrice: "SGD 339",
     vivinoUrl: "https://www.vivino.com/en/paco-dos-cunhas-de-santar-vinha-do-contador-grande-juri-dao/w/6280694?ref=nav-searchv",
@@ -150,7 +168,9 @@ const wines = [
     country: "Portugal",
     flag: "🇵🇹",
     year: "2021",
-    rating: 93,
+    ratingNumber: 96,
+    ratingComplexity: "A",
+    ratingVintage: "A",
     retailPrice: "SGD 668",
     adorePrice: "SGD 559",
     vivinoUrl: "https://www.vivino.com/en/rocim-vinha-da-micaela-alentejo/w/10125646?ref=nav-search",
@@ -165,7 +185,9 @@ const wines = [
     country: "Portugal",
     flag: "🇵🇹",
     year: "2019",
-    rating: 94,
+    ratingNumber: 92,
+    ratingComplexity: "C",
+    ratingVintage: "A",
     retailPrice: "SGD 720",
     adorePrice: "SGD 650",
     vivinoUrl: "https://www.vivino.com/en/varosa-velha-reserva-bruto/w/1269429",
@@ -180,7 +202,9 @@ const wines = [
     country: "Portugal",
     flag: "🇵🇹",
     year: "2010",
-    rating: 96,
+    ratingNumber: 92,
+    ratingComplexity: "B",
+    ratingVintage: "C",
     retailPrice: "SGD 1,899",
     adorePrice: "SGD 1,650",
     vivinoUrl: "https://www.vivino.com/en/varosa-velha-reserva-bruto/w/1269429",
@@ -245,41 +269,41 @@ export default function Wines() {
 
       <div
         ref={rowRef}
-        className="no-scrollbar mt-12 -mx-6 flex snap-x scroll-px-6 gap-6 overflow-x-auto px-6 pb-4 md:-mx-10 md:px-10 md:scroll-px-10"
+        className="no-scrollbar mt-4 -mx-6 flex snap-x scroll-px-6 gap-6 overflow-x-auto px-6 pt-8 pb-8 md:-mx-10 md:px-10 md:scroll-px-10"
       >
         {wines.map((w) => (
           <div
             key={w.src}
             data-wine-card
-            className="group relative flex w-[280px] sm:w-[310px] md:w-[320px] shrink-0 snap-start flex-col overflow-hidden rounded-[24px] border border-[#ddc8cc] bg-white shadow-card transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_64px_rgba(107,39,55,0.18)]"
+            className="group relative flex w-[280px] sm:w-[310px] md:w-[320px] shrink-0 snap-start flex-col rounded-[24px] border border-[#ddc8cc] bg-white transition-all duration-500 hover:-translate-y-2"
           >
-            {/* Image — overflow-hidden clips the scaled image only */}
-            <div className="relative h-[320px] w-full shrink-0 overflow-hidden bg-[#241215]">
+            {/* Image container */}
+            <div className="relative h-[385px] w-full shrink-0 overflow-hidden rounded-t-[24px] bg-[#241215]">
               <Image
                 src={w.src}
                 alt={w.name}
                 fill
                 sizes="(min-width: 1024px) 320px, 280px"
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="object-cover object-[center_35%] transition-transform duration-700 group-hover:scale-105"
               />
-              {/* Rating Badge — lives inside image div so it stays clipped correctly */}
+              {/* Rating Badge */}
               <div className="absolute right-3 top-3 z-20 size-[60px] shadow-[0_4px_16px_rgba(0,0,0,0.3)]" style={{ borderRadius: '50%' }}>
                 <Image src="/images/wine_rating.png" alt="Wine Adore Rating Badge" fill className="object-contain" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-[17px] font-black leading-none text-white drop-shadow-sm" style={{ fontFamily: 'var(--font-jakarta)' }}>{w.rating}</span>
-                  <span className="text-[7px] font-bold uppercase tracking-wide text-white/80 leading-none mt-[1px]">pts</span>
+                <div className="absolute inset-0 flex flex-col items-center">
+                  <span className="text-[17px] font-black leading-none text-white drop-shadow-sm mt-[14px]" style={{ fontFamily: 'var(--font-jakarta)' }}>
+                    {w.ratingNumber}
+                  </span>
+                  <div className="absolute bottom-[13px] inset-x-0 flex justify-between px-[16px] text-[8px] font-black leading-none text-white drop-shadow-sm" style={{ fontFamily: 'var(--font-jakarta)' }}>
+                    <span>{w.ratingComplexity}</span>
+                    <span>{w.ratingVintage}</span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/*
-              Hover overlay — SIBLING of image div, NOT inside it.
-              This prevents image's overflow-hidden from clipping the overlay.
-              Covers the image area exactly via absolute + h-[320px].
-              backdrop-blur blurs what's behind (the image).
-            */}
+            {/* Hover overlay */}
             <div
-              className="pointer-events-none absolute inset-x-0 top-0 z-10 flex h-[320px] flex-col items-center justify-center gap-3.5 px-6 bg-black/45 backdrop-blur-[3px] opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-hover:pointer-events-auto"
+              className="pointer-events-none absolute inset-x-0 top-0 z-10 flex h-[385px] flex-col items-center justify-center gap-3.5 px-6 bg-black/45 backdrop-blur-[3px] opacity-0 rounded-t-[24px] transition-opacity duration-300 group-hover:opacity-100 group-hover:pointer-events-auto"
             >
               <h3 className="max-w-[22ch] text-center text-[19px] font-bold leading-snug text-white drop-shadow-sm">
                 {w.name}
@@ -306,7 +330,7 @@ export default function Wines() {
             </div>
 
             {/* Bottom info — dims on hover */}
-            <div className="relative flex flex-col bg-white px-4 py-4 transition-opacity duration-400 group-hover:opacity-50">
+            <div className="relative flex flex-col bg-white px-4 py-4 rounded-b-[24px] transition-opacity duration-400 group-hover:opacity-50">
               <div className="flex flex-col items-center text-center">
                 <span className="text-[11px] font-medium tracking-wider text-[#9a8e90]">
                   {w.producer}

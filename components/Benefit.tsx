@@ -115,13 +115,15 @@ export default function Benefit() {
                       <div className="pb-6 pl-[2.75rem] pr-8 leading-relaxed text-muted">
                         {it.body}
                         {i === items.length - 1 && (
-                          <a
-                            href="#apc"
-                            className="group mt-5 inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-2.5 text-sm font-medium text-accent transition-colors hover:bg-accent/20"
-                          >
-                            Discover the Circle
-                            <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                          </a>
+                          <div className="mt-6">
+                            <a
+                              href="#apc"
+                              className="group inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-4 py-2.5 text-sm font-medium text-accent transition-colors hover:bg-accent/20"
+                            >
+                              Discover the Circle
+                              <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                            </a>
+                          </div>
                         )}
                       </div>
                     </div>

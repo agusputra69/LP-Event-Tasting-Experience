@@ -52,7 +52,7 @@ export default function Steps() {
       style={isDesktop ? { height: `${steps.length * 100}vh` } : undefined}
     >
       <div className="relative lg:sticky lg:top-0 flex min-h-screen lg:h-screen items-center py-10 lg:py-0 overflow-y-auto lg:overflow-hidden">
-        <div className="mx-auto w-full max-w-[1280px] px-4 md:px-6">
+        <div className="mx-auto w-full max-w-[1280px] px-6 md:px-10">
           <div className="grid items-center gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
             {/* left intro */}
             <div>
@@ -107,16 +107,16 @@ export default function Steps() {
                       <div
                         className={`rounded-2xl border p-5 transition-all duration-500 md:p-6 ${
                           state === "active"
-                            ? "border-accent/30 bg-brand-800 text-cream shadow-[0_24px_60px_-30px_rgba(124,68,75,0.8)] md:scale-[1.015]"
+                            ? "border-accent/30 bg-step-active-bg text-step-active-text shadow-[0_24px_60px_-30px_var(--color-step-active-shadow)] md:scale-[1.015]"
                             : state === "done"
                             ? "card-premium border-hairline bg-surface-light opacity-100"
                             : "border-hairline bg-surface-light opacity-25 blur-[4px]"
                         }`}
                       >
-                        <h3 className={`display text-[1.35rem] md:text-2xl ${state === "active" ? "text-cream" : "text-ink"}`}>
+                        <h3 className={`display text-[1.35rem] md:text-2xl ${state === "active" ? "text-step-active-text" : "text-ink"}`}>
                           {s.title}
                         </h3>
-                        <p className={`mt-2 text-[0.95rem] leading-relaxed ${state === "active" ? "text-cream/85" : "text-ink-2"}`}>
+                        <p className={`mt-2 text-[0.95rem] leading-relaxed ${state === "active" ? "text-step-active-text opacity-85" : "text-ink-2"}`}>
                           {s.body}
                         </p>
                       </div>

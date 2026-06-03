@@ -37,9 +37,9 @@ export default function Founders() {
   };
 
   return (
-    <section id="founders" className="mx-auto max-w-[1280px] px-4 py-10 md:px-6 md:py-14 lg:h-screen lg:py-0 flex items-center justify-center">
+    <section id="founders" className="mx-auto max-w-[1280px] px-6 py-10 md:px-10 md:py-14 lg:h-screen lg:py-0 flex items-center justify-center snap-start scroll-mt-6">
       <Reveal className="w-full">
-        <div className="relative overflow-hidden rounded-[28px] border border-hairline bg-surface-light p-8 shadow-[0_30px_70px_-50px_rgba(42,23,21,0.45)] md:p-12 lg:p-14 w-full lg:min-h-[580px] flex flex-col justify-center">
+        <div className="relative overflow-hidden rounded-[28px] border border-white/10 animate-gradient-shift p-8 shadow-[0_30px_70px_-50px_rgba(0,0,0,0.8)] md:p-12 lg:p-14 w-full lg:min-h-[580px] flex flex-col justify-center">
           {/* big brand watermark, left side behind text */}
           <div
             aria-hidden
@@ -50,12 +50,12 @@ export default function Founders() {
             {/* left intro */}
             <div className="flex flex-col">
               <span className="eyebrow self-start">The faces behind the experience</span>
-              <h2 className="display mt-6 text-[clamp(2rem,3.6vw,3.25rem)] text-ink">
+              <h2 className="display mt-6 text-[clamp(2rem,3.6vw,3.25rem)] text-[#f5ece8]">
                 Before It Became A Brand, <br className="hidden sm:inline" />
                 Wine Adore Was A Personal <br className="hidden sm:inline" />
                 Pursuit.
               </h2>
-              <p className="mt-6 max-w-md leading-relaxed text-ink-2">
+              <p className="mt-6 max-w-md leading-relaxed text-[#c0a5a4]">
                 Born from a desire to find wines with story, character, and enduring
                 elegance.
               </p>
@@ -66,27 +66,27 @@ export default function Founders() {
               {founders.map((f) => (
                 <article
                   key={f.name}
-                  className="card-premium flex flex-col overflow-hidden rounded-3xl border border-hairline bg-surface-2"
+                  className="card-premium flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#221013]"
                 >
                   <div className="relative aspect-[4/3] w-full overflow-hidden">
                     <Image src={f.img} alt={`${f.name}, ${f.role}`} fill sizes="(min-width:640px) 240px, 100vw" className="object-cover object-top" />
                   </div>
                   <div className="flex flex-1 flex-col p-5">
-                    <h3 className="display text-2xl text-ink">{f.name}</h3>
+                    <h3 className="display text-2xl text-[#f5ece8]">{f.name}</h3>
                     <span className="mt-1 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-[#a0505d]">
                       {f.role}
                     </span>
                     
                     {/* quote box */}
                     <div className="mt-4 border-l border-accent/40 pl-3">
-                      <p className="text-[0.88rem] italic leading-relaxed text-ink-2">
+                      <p className="text-[0.88rem] italic leading-relaxed text-[#c0a5a4]">
                         &ldquo;{f.quote}&rdquo;
                       </p>
                     </div>
 
                     {/* bio text (conditional expansion) */}
                     {expanded[f.id] && (
-                      <p className="mt-4 text-[0.88rem] leading-relaxed text-ink-2">
+                      <p className="mt-4 text-[0.88rem] leading-relaxed text-[#c0a5a4]">
                         {f.bio}
                       </p>
                     )}

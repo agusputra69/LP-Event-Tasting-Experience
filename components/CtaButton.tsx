@@ -54,7 +54,7 @@ export default function CtaButton({
         target={target}
         rel={rel}
         onClick={onClick}
-        className={`group inline-flex items-center justify-center gap-2 rounded-full border border-line bg-white/[0.04] px-6 py-3.5 font-medium text-cream backdrop-blur ${ease} hover:-translate-y-0.5 hover:border-accent/40 hover:bg-white/[0.07] active:scale-[0.98] ${className}`}
+        className={`group inline-flex items-center justify-center gap-2 rounded-full border border-line bg-btn-sec-bg px-6 py-3.5 font-medium text-cream backdrop-blur ${ease} hover:-translate-y-0.5 hover:border-accent/40 hover:bg-btn-sec-hover-bg active:scale-[0.98] ${className}`}
       >
         {children}
         {icon && <ArrowUpRight className="size-4 text-accent transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />}

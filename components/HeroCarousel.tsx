@@ -79,7 +79,7 @@ export default function HeroCarousel() {
               style={{ transform: `translateY(-${chip * 1.5}rem)` }}
             >
               {CHIPS.map((c) => (
-                <span key={c.text} className="flex h-6 items-center gap-2 whitespace-nowrap text-xs text-cream/90">
+                <span key={c.text} className="flex h-6 items-center gap-2 whitespace-nowrap text-xs text-white/95">
                   {c.live ? (
                     <span className="relative flex size-2">
                       <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-60" />
@@ -130,20 +130,20 @@ export default function HeroCarousel() {
       </div>
 
       {/* collaborated-with bar */}
-      <div className="flex items-center gap-4 overflow-hidden rounded-2xl border border-line bg-white/[0.03] px-4 py-3 sm:px-5">
+      <div className="flex items-center gap-4 overflow-hidden rounded-2xl border border-line bg-[var(--color-collaborated-bg)] px-4 py-4.5 sm:px-5">
         <span className="shrink-0 text-xs uppercase tracking-[0.16em] text-muted-2">
           Collaborated with
         </span>
         <div className="relative flex-1 min-w-0 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
-          <div className="flex w-max animate-marquee items-center gap-12">
+          <div className="flex w-max animate-marquee items-center gap-14">
             {[...LOGOS, ...LOGOS, ...LOGOS].map((logo, i) => (
-              <div key={i} className="relative h-6 w-20 shrink-0 opacity-40 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0">
+              <div key={i} className="relative h-8 w-24 shrink-0">
                 <Image
                   src={logo.src}
                   alt={logo.alt}
                   fill
-                  sizes="80px"
-                  className="object-contain"
+                  sizes="96px"
+                  className="object-contain partner-logo"
                 />
               </div>
             ))}

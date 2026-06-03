@@ -3,7 +3,8 @@ import CtaButton from "./CtaButton";
 
 const explore = [
   { label: "Problems", href: "#problems" },
-  { label: "Steps", href: "#steps" },
+  { label: "How to join", href: "#steps" },
+  { label: "Benefits", href: "#benefits" },
   { label: "Wines", href: "#wines" },
   { label: "Gallery", href: "#gallery" },
   { label: "FAQ", href: "#faq" },
@@ -21,7 +22,7 @@ export default function Footer() {
       <div className="overflow-hidden py-10">
         <div className="flex w-max animate-marquee-slow items-center">
           {Array.from({ length: 6 }).map((_, i) => (
-            <span key={i} className="display flex items-center whitespace-nowrap text-[5rem] italic leading-none text-white/[0.04] md:text-[8rem]">
+            <span key={i} className="display flex items-center whitespace-nowrap text-[5rem] italic leading-none text-cream/[0.04] md:text-[8rem]">
               Wine Adore
               <span className="px-8 text-accent-soft/30">·</span>
             </span>
@@ -60,9 +61,14 @@ export default function Footer() {
           {/* contact */}
           <div>
             <p className="text-[0.7rem] font-medium uppercase tracking-[0.2em] text-muted-2">Contact</p>
-            <p className="mt-5 leading-relaxed text-cream/85">
+            <a
+              href="https://maps.app.goo.gl/P8L6raBsU9KZN2RW8"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 block leading-relaxed text-cream/85 transition-colors hover:text-accent"
+            >
               Wine Adore Interlocal Centre, 100 Pasir Panjang Road, Singapore 118523.
-            </p>
+            </a>
             <a href="mailto:hello@wineadore.sg" className="mt-3 inline-block text-cream/85 transition-colors hover:text-accent">
               hello@wineadore.sg
             </a>

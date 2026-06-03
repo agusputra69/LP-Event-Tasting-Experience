@@ -53,10 +53,15 @@ export default function Hero() {
         aria-hidden
         className="pointer-events-none absolute inset-x-0 -top-40 h-[620px]"
         style={{
-          background:
-            "radial-gradient(60% 80% at 50% 0%, rgba(162,89,99,0.5) 0%, rgba(124,68,75,0.26) 38%, rgba(25,13,15,0) 72%)",
+          background: "var(--color-hero-glow)",
         }}
       />
+
+      {/* animated fluid blurry gradient blobs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute -top-[10%] left-[10%] w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] rounded-full bg-accent/20 blur-[100px] sm:blur-[130px] animate-fluid-blob-1" />
+        <div className="absolute top-[20%] -right-[10%] w-[300px] sm:w-[450px] h-[300px] sm:h-[450px] rounded-full bg-[#d38b95]/16 blur-[80px] sm:blur-[110px] animate-fluid-blob-2" />
+      </div>
       <div className="relative mx-auto w-full max-w-[1280px] px-6 pb-16 pt-28 sm:pt-32 md:px-10 md:pb-20 md:pt-36 lg:py-28">
         <div className="grid grid-cols-1 items-start gap-12 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] xl:gap-16">
           <div className="order-1 flex flex-col items-center text-center xl:items-start xl:text-left">

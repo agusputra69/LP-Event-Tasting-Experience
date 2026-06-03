@@ -39,7 +39,7 @@ export default function Comparison() {
         </Reveal>
       </div>
 
-      <div className="mx-auto mt-14 grid max-w-[1280px] gap-6 px-6 sm:px-8 lg:grid-cols-2 lg:items-start lg:gap-10 lg:px-10">
+      <div className="mx-auto mt-14 grid max-w-[1280px] gap-6 px-6 md:px-10 lg:grid-cols-2 lg:items-start lg:gap-10">
         {/* The old way — slides in from the left, then stays */}
         <Reveal x={-96} className="h-full w-full">
           <article className="card-premium grid h-full w-full grid-cols-1 gap-6 rounded-3xl border border-line bg-card/60 p-6 sm:grid-cols-[176px_1fr]">
@@ -67,7 +67,7 @@ export default function Comparison() {
 
         {/* The Wine Adore way — slides in from the right, then stays */}
         <Reveal x={108} delay={0.18} className="h-full w-full">
-          <article className="card-premium-lg relative grid h-full w-full grid-cols-1 gap-6 overflow-hidden rounded-3xl border border-accent/25 bg-gradient-to-br from-brand-900 to-bg p-6 sm:grid-cols-[1fr_176px]">
+          <article className="card-premium-lg relative grid h-full w-full grid-cols-1 gap-6 overflow-hidden rounded-3xl border border-accent/25 bg-gradient-to-br from-comparison-accent-card-from to-comparison-accent-card-to p-6 sm:grid-cols-[1fr_176px]">
             <div className="relative order-first min-h-[235px] overflow-hidden rounded-2xl sm:order-last">
               <Image src="/images/wine-adore-tasting-new.png" alt="An intimate, candlelit Wine Adore tasting experience" fill sizes="200px" className="object-cover" />
             </div>

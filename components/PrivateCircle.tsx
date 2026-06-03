@@ -18,7 +18,7 @@ export default function PrivateCircle() {
           Desktop: 2-col grid (content | animation), one-page view.
           Mobile: animation becomes a moving background behind the
           content with a brand/dark gradient overlay for readability. */}
-      <div id="apps" className="card-premium-lg relative grid snap-start scroll-mt-24 overflow-hidden rounded-[28px] border border-accent/15 lg:grid-cols-2">
+      <div id="apps" className="card-premium-lg relative grid scroll-mt-24 overflow-hidden rounded-[28px] border border-accent/15 lg:grid-cols-2">
         {/* animation — bg on mobile, right column on desktop */}
         <div className="absolute inset-0 lg:relative lg:inset-auto lg:order-2 lg:min-h-[460px]">
           <AppLottie src="/animations/wine-showcase.json" fit="slice" className="absolute inset-0 size-full" />
@@ -28,16 +28,16 @@ export default function PrivateCircle() {
         <div
           aria-hidden
           className="absolute inset-0 lg:hidden"
-          style={{ background: "linear-gradient(180deg, rgba(33,16,18,0.88) 0%, rgba(124,68,75,0.74) 45%, rgba(33,16,18,0.94) 100%)" }}
+          style={{ background: "var(--color-promo-overlay)" }}
         />
 
         {/* content */}
-        <div className="relative z-10 order-1 p-8 sm:p-10 lg:bg-[radial-gradient(130%_130%_at_0%_0%,var(--color-brand-500)_0%,var(--color-brand-800)_46%,var(--color-brand-900)_100%)] lg:p-14">
+        <div className="relative z-10 order-1 p-8 sm:p-10 lg:bg-[radial-gradient(130%_130%_at_0%_0%,var(--color-promo-gradient-start)_0%,var(--color-promo-gradient-middle)_46%,var(--color-promo-gradient-end)_100%)] lg:p-14">
           <div className="mb-4">
             <span className="eyebrow">Digital Wine Ecosystem</span>
           </div>
 
-          <h2 className="mt-6 text-[clamp(1.9rem,3.2vw,2.7rem)] font-bold leading-[1.1] text-cream">
+          <h2 className="display mt-6 text-[clamp(1.9rem,3.2vw,2.7rem)] leading-[1.1] text-cream">
             A <em>Seamless Wine Experience</em>, Across Web & Mobile
           </h2>
           <p className="mt-4 max-w-md leading-relaxed text-cream/80">
@@ -47,7 +47,7 @@ export default function PrivateCircle() {
           {/* condensed highlights as pills */}
           <div className="mt-6 flex flex-wrap gap-2">
             {highlights.map((h) => (
-              <span key={h} className="rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-sm font-medium text-cream backdrop-blur-sm">
+              <span key={h} className="rounded-full border border-line bg-line-soft px-3.5 py-1.5 text-sm font-medium text-cream backdrop-blur-sm">
                 {h}
               </span>
             ))}
@@ -74,7 +74,7 @@ export default function PrivateCircle() {
       </div>
 
       {/* ── Adore Private Circle ─────────────────────────────── */}
-      <div id="apc" className="card-premium grid snap-start scroll-mt-24 gap-8 rounded-[28px] border border-accent/15 bg-gradient-to-br from-brand-900 to-bg p-8 md:grid-cols-2 md:p-10 lg:gap-14">
+      <div id="apc" className="card-premium grid scroll-mt-24 gap-8 rounded-[28px] border border-accent/15 bg-gradient-to-br from-comparison-accent-card-from to-comparison-accent-card-to p-8 md:grid-cols-2 md:p-10 lg:gap-14">
         <div>
           <div className="flex items-center gap-4">
             <div className="relative size-14 shrink-0 overflow-hidden rounded-full border border-accent-soft/30 bg-bg">
@@ -83,7 +83,14 @@ export default function PrivateCircle() {
                 alt="APC Seal Logo"
                 fill
                 sizes="56px"
-                className="object-cover"
+                className="object-cover dark-logo"
+              />
+              <Image
+                src="/images/apc-logo-light.webp"
+                alt="APC Seal Logo"
+                fill
+                sizes="56px"
+                className="object-cover light-logo"
               />
             </div>
             <span className="eyebrow">Adore Private Circle</span>

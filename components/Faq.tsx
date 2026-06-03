@@ -22,7 +22,20 @@ const faqs = [
   },
   {
     q: "Where is the wine tasting held?",
-    a: "At Wine Adore Interlocal Centre, 100 Pasir Panjang Road, Singapore 118523. Sessions run every Friday at 2:00 PM and Sunday at 7:00 PM.",
+    a: (
+      <>
+        At{" "}
+        <a
+          href="https://maps.app.goo.gl/P8L6raBsU9KZN2RW8"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-accent underline transition-colors hover:text-accent-soft"
+        >
+          Wine Adore Interlocal Centre, 100 Pasir Panjang Road, Singapore 118523
+        </a>
+        . Sessions run every Friday at 2:00 PM and Sunday at 7:00 PM.
+      </>
+    ),
   },
   {
     q: "I'm a total beginner. Is this for me?",

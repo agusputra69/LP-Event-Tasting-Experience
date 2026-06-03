@@ -32,16 +32,16 @@ export default function FinalCta() {
 
       {/* content */}
       <div className="relative flex h-full flex-col p-8 md:p-10 lg:p-12">
-        <span className="w-fit rounded-full border border-white/15 bg-black/40 px-4 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.2em] text-cream backdrop-blur">
+        <span className="w-fit rounded-full border border-white/15 bg-black/40 px-4 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#f5ece8] backdrop-blur">
           Ready to join?
         </span>
 
-        <h2 className="display mt-6 text-[clamp(2.1rem,3.4vw,3.1rem)] leading-[1.05] text-cream">
+        <h2 className="display mt-6 text-[clamp(2.1rem,3.4vw,3.1rem)] leading-[1.05] text-[#f5ece8]">
           Ready to experience wine,{" "}
           <em className="text-accent-soft">reimagined?</em>
         </h2>
 
-        <p className="mt-4 max-w-md leading-relaxed text-cream/85">
+        <p className="mt-4 max-w-md leading-relaxed text-[#f5ece8]/85">
           Seats are intentionally limited to preserve an intimate, relaxed, and
           personal experience. Your seat at the table is waiting — will you join the
           story?
@@ -50,7 +50,7 @@ export default function FinalCta() {
         <div className="mt-7 flex flex-wrap items-center gap-3">
           <a
             href="#booking"
-            className="inline-flex items-center rounded-full bg-cream px-6 py-3.5 font-semibold text-brand-800 transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
+            className="inline-flex items-center rounded-full bg-white px-6 py-3.5 font-semibold text-brand-800 transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
           >
             Reserve your seat
           </a>
@@ -58,7 +58,7 @@ export default function FinalCta() {
             href={WHATSAPP_INFO_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/35 px-6 py-3.5 font-medium text-cream backdrop-blur transition-colors hover:bg-black/55"
+            className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/35 px-6 py-3.5 font-medium text-[#f5ece8] backdrop-blur transition-colors hover:bg-black/55"
           >
             <WhatsAppIcon className="size-4 text-[#4eb87a]" />
             More information
@@ -67,11 +67,16 @@ export default function FinalCta() {
 
         {/* location + note pinned to bottom */}
         <div className="mt-auto pt-10">
-          <p className="flex items-center gap-1.5 text-cream/95">
+          <a
+            href="https://maps.app.goo.gl/P8L6raBsU9KZN2RW8"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-[#f5ece8]/95 hover:text-accent transition-colors w-fit"
+          >
             <PinIcon className="size-4 text-accent-soft" />
             Interlocal Centre, 100G Pasir Panjang Rd, Singapore 118523
-          </p>
-          <p className="mt-3 text-sm italic text-cream/60">
+          </a>
+          <p className="mt-3 text-sm italic text-[#f5ece8]/60">
             No pressure · Fully redeemable reservation · Limited seats remaining for
             the next session.
           </p>

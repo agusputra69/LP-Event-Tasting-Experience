@@ -7,8 +7,8 @@ import { WHATSAPP_INFO_URL } from "@/lib/links";
 
 const links = [
   { label: "Problems", href: "#problems" },
-  { label: "Benefits", href: "#benefits" },
   { label: "How to join", href: "#steps" },
+  { label: "Benefits", href: "#benefits" },
   { label: "Wines", href: "#wines" },
 ];
 
@@ -31,7 +31,7 @@ export default function Nav() {
 
   return (
     <header className="fixed inset-x-0 top-3 z-50 px-4 md:px-6">
-      <nav className="mx-auto flex h-14 max-w-[1280px] items-center justify-between rounded-full border border-line bg-[rgba(25,13,15,0.6)] pl-6 pr-2 backdrop-blur-xl">
+      <nav className="mx-auto flex h-14 max-w-[1280px] items-center justify-between rounded-full border border-line bg-nav-bg pl-6 pr-2 backdrop-blur-xl">
         <a href="#top" aria-label="Wine Adore home" className="text-cream" onClick={() => setOpen(false)}>
           <Logo className="h-[18px] w-auto" />
         </a>
@@ -52,7 +52,7 @@ export default function Nav() {
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-3.5"><polyline points="4 6 8 10 12 6" /></svg>
             </button>
             <div className="invisible absolute right-0 top-full pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-              <div className="w-56 rounded-2xl border border-line bg-[rgba(20,8,9,0.95)] p-2 shadow-card backdrop-blur-xl">
+              <div className="w-56 rounded-2xl border border-line bg-dropdown-bg p-2 shadow-card backdrop-blur-xl">
                 {others.map((o) => (
                   <a key={o.label} href={o.href} className="block rounded-xl px-3.5 py-2.5 text-sm text-cream/85 transition-colors hover:bg-white/5 hover:text-cream">
                     {o.label}
@@ -91,7 +91,7 @@ export default function Nav() {
 
       {/* mobile menu */}
       {open && (
-        <div className="mx-auto mt-2 max-h-[80dvh] max-w-[1280px] overflow-y-auto rounded-3xl border border-line bg-[rgba(20,8,9,0.95)] p-3 backdrop-blur-xl lg:hidden">
+        <div className="mx-auto mt-2 max-h-[80dvh] max-w-[1280px] overflow-y-auto rounded-3xl border border-line bg-dropdown-bg p-3 backdrop-blur-xl lg:hidden">
           <ul className="flex flex-col">
             {links.map((l) => (
               <li key={l.label}>
