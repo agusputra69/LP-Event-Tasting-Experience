@@ -273,11 +273,6 @@ export default function Wines() {
         </div>
       </Reveal>
 
-      {/* Hint text — adapts by screen size */}
-      <p className="mt-6 text-center text-xs text-muted-2">
-        <span className="lg:hidden">Tap a card to explore details &amp; pricing</span>
-        <span className="hidden lg:inline">Hover a card to explore details &amp; pricing</span>
-      </p>
 
       <div
         ref={rowRef}
@@ -300,7 +295,7 @@ export default function Wines() {
                   alt={w.name}
                   fill
                   sizes="(min-width: 1024px) 320px, 280px"
-                  className={`object-cover object-[center_35%] transition-transform duration-700 group-hover:scale-105 ${isActive ? "scale-105" : ""}`}
+                  className={`object-cover object-center transition-transform duration-700 group-hover:scale-105 ${isActive ? "scale-105" : ""}`}
                 />
                 {/* Rating Badge */}
                 <div className="absolute right-3 top-3 z-20 size-[60px] shadow-[0_4px_16px_rgba(0,0,0,0.3)]" style={{ borderRadius: "50%" }}>
@@ -399,7 +394,12 @@ export default function Wines() {
         })}
       </div>
 
-      <p className="mt-8 text-center text-sm text-muted-2">
+      <p className="mt-4 text-center text-xs text-muted-2">
+        <span className="lg:hidden">Tap a card to explore details &amp; pricing</span>
+        <span className="hidden lg:inline">Hover a card to explore details &amp; pricing</span>
+      </p>
+
+      <p className="mt-4 text-center text-sm text-muted-2">
         Our line-up changes weekly to ensure every visit is a relaxed discovery.
         Will you be there for the next pour?
       </p>

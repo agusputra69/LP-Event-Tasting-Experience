@@ -42,7 +42,7 @@ const videos: Media[] = [
 const TABS = ["Photos", "Videos"] as const;
 
 export default function Atmosphere() {
-  const [tab, setTab] = useState<(typeof TABS)[number]>("Photos");
+  const [tab, setTab] = useState<(typeof TABS)[number]>("Videos");
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [naturalRatio, setNaturalRatio] = useState<number | null>(null);
   const rowRef = useRef<HTMLDivElement>(null);
