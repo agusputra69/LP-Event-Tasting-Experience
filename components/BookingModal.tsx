@@ -273,7 +273,9 @@ export default function BookingModal() {
   }, [isOpen]);
 
   const close = () => {
-    window.history.pushState("", document.title, window.location.pathname + window.location.search);
+    // Pass null (not "") — Next.js 15 sets __NA on the state object;
+    // a string primitive throws "Cannot create property '__NA' on string ''"
+    window.history.pushState(null, "", window.location.pathname + window.location.search);
     setIsOpen(false);
   };
 

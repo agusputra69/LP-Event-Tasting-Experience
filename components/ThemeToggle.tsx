@@ -11,8 +11,10 @@ export default function ThemeToggle() {
       setTheme("light");
       document.documentElement.classList.add("light");
     } else {
+      // Default is always dark — persist it on first visit so it never drifts
       setTheme("dark");
       document.documentElement.classList.remove("light");
+      if (!saved) localStorage.setItem("theme", "dark");
     }
   }, []);
 

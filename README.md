@@ -1,4 +1,4 @@
-# Wine Adore — Landing Page
+# Wine Adore — Landing Page Event Tasting Experience
 
 A fully static landing page for **Wine Adore**, Singapore's immersive Old World wine-tasting experience. Built for performance and conversion — prerendered at build time, zero runtime server dependencies.
 
@@ -30,8 +30,7 @@ npm run lint     # ESLint check
 │   ├── layout.tsx          # Root layout — fonts, metadata, ThemeToggle
 │   ├── page.tsx            # Page shell — composes all sections
 │   ├── globals.css         # Design tokens + global styles
-│   ├── not-found.tsx       # Custom 404 page
-│   └── opengraph-image.tsx # Auto-generated OG image
+│   └── not-found.tsx       # Custom 404 page
 ├── components/             # One file per section (see table below)
 ├── lib/
 │   ├── event.ts            # Single source of truth for pricing & social proof
@@ -115,7 +114,6 @@ A grain overlay (`div.grain-overlay`) and skip-to-content link are injected glob
 - Full `Metadata` object in `layout.tsx` (title template, description, keywords)
 - Open Graph tags for `en_SG` locale — `https://wineadore.sg`
 - Twitter card (`summary_large_image`)
-- Auto-generated `/opengraph-image` route via `app/opengraph-image.tsx`
 - SVG favicon at `/favicon.svg`
 
 ## Deployment
@@ -124,7 +122,6 @@ Deployed on **Vercel** via GitHub integration (branch: `main`).
 All routes are fully static — no Edge/Serverless functions required.
 
 ```
-○ /                  prerendered static
-○ /_not-found        prerendered static
-○ /opengraph-image   prerendered static
+○ /             prerendered static
+○ /_not-found   prerendered static
 ```
