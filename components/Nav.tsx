@@ -68,7 +68,7 @@ export default function Nav() {
           <CtaButton href={WHATSAPP_INFO_URL} target="_blank" rel="noopener noreferrer" variant="secondary" icon={false} className="px-4 py-2 text-sm">
             More information
           </CtaButton>
-          <CtaButton href="#booking" icon={false} className="px-5 py-2 text-sm">
+          <CtaButton href="https://www.wineadore.com/events" target="_blank" rel="noopener noreferrer" icon={false} className="px-5 py-2 text-sm">
             Reserve
           </CtaButton>
         </div>
@@ -119,7 +119,7 @@ export default function Nav() {
             <CtaButton href={WHATSAPP_INFO_URL} target="_blank" rel="noopener noreferrer" variant="secondary" icon={false} onClick={() => setOpen(false)} className="w-full py-3 text-sm">
               More information
             </CtaButton>
-            <CtaButton href="#booking" icon={false} onClick={() => setOpen(false)} className="w-full py-3 text-sm">
+            <CtaButton href="https://www.wineadore.com/events" target="_blank" rel="noopener noreferrer" icon={false} onClick={() => setOpen(false)} className="w-full py-3 text-sm">
               Reserve your seat
             </CtaButton>
           </div>

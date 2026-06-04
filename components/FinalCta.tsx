@@ -49,7 +49,9 @@ export default function FinalCta() {
 
         <div className="mt-7 flex flex-wrap items-center gap-3">
           <a
-            href="#booking"
+            href="https://www.wineadore.com/events"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center rounded-full bg-white px-6 py-3.5 font-semibold text-brand-800 transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
           >
             Reserve your seat

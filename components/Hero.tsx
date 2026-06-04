@@ -80,7 +80,7 @@ export default function Hero() {
             <Reveal delay={0.1}>
               {/* CTAs */}
               <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:justify-center xl:justify-start sm:gap-x-5 sm:gap-y-3 w-full sm:w-auto">
-                <CtaButton href="#booking">Reserve your seat</CtaButton>
+                <CtaButton href="https://www.wineadore.com/events" target="_blank" rel="noopener noreferrer">Reserve your seat</CtaButton>
                 <CtaButton href={WHATSAPP_INFO_URL} target="_blank" rel="noopener noreferrer" variant="ghost">
                   or ask us on WhatsApp
                 </CtaButton>

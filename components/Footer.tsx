@@ -48,7 +48,7 @@ export default function Footer() {
               Old World wines, candlelit rooms, and conversations that linger —
               crafted for the curious in Singapore.
             </p>
-            <CtaButton href="#booking" className="mt-6 px-6 py-3 text-sm">
+            <CtaButton href="https://www.wineadore.com/events" target="_blank" rel="noopener noreferrer" className="mt-6 px-6 py-3 text-sm">
               Reserve your seat
             </CtaButton>
           </div>

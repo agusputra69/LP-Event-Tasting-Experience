@@ -49,7 +49,7 @@ export default function BenefitMobile() {
             curiosity rather than ceremony.
           </p>
           <div className="mt-8">
-            <CtaButton href="#booking">Reserve now</CtaButton>
+            <CtaButton href="https://www.wineadore.com/events" target="_blank" rel="noopener noreferrer">Reserve now</CtaButton>
           </div>
         </div>
       </Reveal>

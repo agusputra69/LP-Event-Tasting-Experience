@@ -20,7 +20,7 @@ export default function NotFound() {
       </p>
       <div className="relative mt-9 flex flex-wrap items-center justify-center gap-x-5 gap-y-3">
         <CtaButton href="/">Back to home</CtaButton>
-        <CtaButton href="/#booking" variant="ghost">
+        <CtaButton href="https://www.wineadore.com/events" target="_blank" rel="noopener noreferrer" variant="ghost">
           Reserve a seat
         </CtaButton>
       </div>

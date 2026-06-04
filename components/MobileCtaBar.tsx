@@ -30,7 +30,9 @@ export default function MobileCtaBar() {
           Join Singapore’s most immersive 2-hour guided tasting
         </p>
         <a
-          href="#booking"
+          href="https://www.wineadore.com/events"
+          target="_blank"
+          rel="noopener noreferrer"
           className="shrink-0 rounded-full bg-accent px-4 py-3 text-sm font-semibold text-white transition-transform active:scale-[0.99]"
         >
           Reserve Now
