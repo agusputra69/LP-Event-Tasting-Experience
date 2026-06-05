@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import ThemeToggle from "@/components/ThemeToggle";
+import BackgroundMusic from "@/components/BackgroundMusic";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -58,6 +59,7 @@ export default function RootLayout({
         <div className="grain-overlay" aria-hidden />
         {children}
         <ThemeToggle />
+        <BackgroundMusic />
       </body>
     </html>
   );
